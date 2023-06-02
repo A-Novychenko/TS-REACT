@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+// import { Route } from "react-router-dom";
 
 import {TodoList} from "./components/Todolist";
 import {AddTodo} from "./components/AddTodo";
@@ -20,9 +21,16 @@ const App: React.FC = () => {
     });
   };
 
+  const todoRemoveHandler = (id: string) => {
+    setTodos((pS) => {
+      return pS.filter((todo) => todo.id !== id);
+    });
+  };
+
   return (
     <>
-      <TodoList items={todos} />
+      {/* <Route></Route> */}
+      <TodoList items={todos} todoRemoveHandler={todoRemoveHandler} />
       <AddTodo onAddTodo={todoAddHandler} />
     </>
   );
